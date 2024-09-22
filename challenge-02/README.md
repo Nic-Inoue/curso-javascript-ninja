@@ -24,7 +24,7 @@ Onde VALOR é o novo valor da variável.
 */
 function valorNova(){
   nova = 5;
-  return 'O valor da variavel agora é 5.'
+  return 'O valor da variavel agora é' + nova;
 }
 
 // Invoque a função criada acima.
@@ -43,9 +43,9 @@ Crie uma função com as seguintes características:
 function mat(x, y, z){
 if(x === undefined || y === undefined || z === undefined){
   return 'Preencha todos os valores corretamente!';
-} else {
-  return x * y * z + 2;
-}}
+}
+  return (x * y * z) + 2;
+}
 
 // Invoque a função criada acima, passando só dois números como argumento.
 mat(1, 2);
@@ -70,31 +70,24 @@ Crie uma função com as seguintes características:
 */
 function math(x, y, z){
   if(x !== undefined && y === undefined && z === undefined){
-    return x; }
-  if(y !== undefined && x === undefined && z === undefined){
-    return y; }
-  if(z !== undefined && x === undefined && y === undefined){
-    return z; }
+    return x;
+  }
   if(x !== undefined && y !== undefined && z === undefined){
-    return x + y; }
-  if(x !== undefined && y === undefined && z !== undefined){
-    return x + z; }
-  if(x === undefined && y !== undefined && z !== undefined){
-    return y + z; }
+    return x + y;
+  }
   if(x !== undefined && y !== undefined && z !== undefined){
-    return (x + y) / z; }
+    return (x + y) / z;
+  }
   if(x === undefined && y === undefined && z === undefined){
-    return false; } 
-  else {
-  return null;
+    return false;
+  }
+  else { 
+    return null;
 }}
 
 // Invoque a função acima utilizando todas as possibilidades (com nenhum argumento, com um, com dois e com três.) Coloque um comentário de linha ao lado da função com o resultado de cada invocação.
-math(5, undefined, undefined) // = 5
-math(undefined, 4, undefined) // = 4
-math(undefined, undefined, 3) // = 3
-math(5, 4, undefined) // = 9
-math(undefined, 4, 3) // = 7
+math(5) // = 5
+math(5, 4) // = 9
 math(5, 4, 3) // = 3
 math() // = false
 ```
