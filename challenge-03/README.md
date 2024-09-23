@@ -166,32 +166,23 @@ método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
 */
 pessoa.apresentacao = function (){
-  var artigoSexo = function (){
-    if(pessoa.sexo === 'Feminino'){
-      return "eu sou a";
-    }
-  return "eu sou o";
-  }
-
-  var singularIdade = function (){
-    if(pessoa.idade === 1){
-      return 'ano';
-    }
-    if(pessoa.idade > 1){
-      return 'anos';
-    }
-  }
+  var artigoSexo = "o";
+  var indicadorIdade = 'anos';
+  var indicadorMetrosCaminhados = 'metros';
   
-  var singularMetrosCaminhados = function (){
-    if(pessoa.caminhouQuantosMetros === 1){
-      return 'metro';
-    }
-    if(pessoa.caminhouQuantosMetros > 1){
-      return 'metros';
-    }
+  if(pessoa.sexo === 'Feminino'){
+    artigoSexo = "a";
   };
 
-  return 'Olá, ' + artigoSexo() + ' ' + pessoa.nome + ' ' + pessoa.sobrenome + ', tenho ' + pessoa.idade + ' ' + singularIdade() + ', ' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' ' + singularMetrosCaminhados() + '!'
+  if(pessoa.idade === 1){
+    indicadorIdade = 'ano';
+  };
+
+  if(pessoa.caminhouQuantosMetros === 1){
+    indicadorMetrosCaminhados = 'metro';
+  };
+
+  return 'Olá, eu sou ' + artigoSexo + ' ' + pessoa.nome + ' ' + pessoa.sobrenome + ', tenho ' + pessoa.idade + ' ' + indicadorIdade + ', ' + pessoa.altura + ', meu peso é ' + pessoa.peso + ' e, só hoje, eu já caminhei ' + pessoa.caminhouQuantosMetros + ' ' + indicadorMetrosCaminhados + '!'
 }
 // Agora, apresente-se ;)
 pessoa.apresentacao(); // 'Olá, eu sou o Nicolas Inoue, tenho 24 anos, 1.77, meu peso é 63 e, só hoje, eu já caminhei 10 metros!'
