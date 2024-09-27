@@ -73,10 +73,8 @@ function book(nomeLivro = undefined){
             editora: 'Saraiva'
         }
     }; 
-    if (nomeLivro === undefined){
-        return livros;
-    };
-    return livros[nomeLivro];
+
+    return !nomeLivro ? livros: livros[nomeLivro];
 };
 
 /*
@@ -89,18 +87,21 @@ Ainda com a função acima, imprima a quantidade de páginas de um livro qualque
 usando a frase:
 "O livro [NOME_DO_LIVRO] tem [X] páginas!"
 */
-"O livro " + book(Ajin) + ' tem ' + book(Ajin).quantidadePaginas + ' páginas!'
+var bookTitle = 'Ajin';
+"O livro " + bookTitle + " tem " + book(bookTitle).quantidadePaginas + ' páginas!'
 
 /*
 Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
 a frase:
 "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
 */
-'O autor do livro ' + book()
+var bookTitle2 = 'Tokyo Ghoul';
+'O autor do livro' + bookTitle2 + ' é ' + book(bookTitle2).autor + '.';
 
 /*
 Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
 a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
 */
-// ?
+var bookTitle3 = 'Conjurador';
+"O livro " + bookTitle3 + ' foi publicado pela editora ' + book(bookTitle3).editora + '.';
