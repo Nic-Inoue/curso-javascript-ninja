@@ -12,7 +12,9 @@ Invoque a função criada acima, passando dois números que serão somados, e mo
 o resultado no console, com a frase:
 "A soma de [VALOR 1] e [VALOR2] é igual a [RESULTADO]."
 */
-console.log('A soma de 4 e 3 é igual a ' + sum(4, 3) + '.');
+var value1 = 5;
+var value2 = 8;
+console.log('A soma de ' + value1 + ' e ' + value2 + ' é igual a ' + sum(value1, value2) + '.');
 
 /*
 Mostre no console o nome da função criada acima, com a frase:
@@ -54,22 +56,24 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
 */
 function calculator(operador){
   return function (num1, num2){
+    var stringResult = "Resultado da operação: " + num1 + ' ' + operador + ' ' + num2 + ' = ';
+
     switch(operador){
       case '+':
-        return "Resultado da operação: " + num1 + ' ' + operador + ' ' + num2 + ' = ' + (num1 + num2);
+        return stringResult + (num1 + num2);
       case '-':
-        return "Resultado da operação: " + num1 + ' ' + operador + ' ' + num2 + ' = ' + (num1 - num2);
+        return stringResult + (num1 - num2);
       case '*':
-        return "Resultado da operação: " + num1 + ' ' + operador + ' ' + num2 + ' = ' + (num1 * num2);
+        return stringResult + (num1 * num2);
       case '/':
-        return "Resultado da operação: " + num1 + ' ' + operador + ' ' + num2 + ' = ' + (num1 / num2);
+        return stringResult + (num1 / num2);
       case '%':
-        return "Resultado da operação: " + num1 + ' ' + operador + ' ' + num2 + ' = ' + (num1 % num2);
+        return stringResult + (num1 % num2);
     };
 
     return "Operação inválida."
   };
-}
+};
 
 /*
 Declare uma variável chamada `sum`, que receberá a função acima, passando como
