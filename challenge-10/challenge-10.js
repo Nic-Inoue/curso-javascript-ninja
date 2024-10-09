@@ -200,8 +200,6 @@
         showErrorMessage(operationSignal); 
     };
 
-
-
     /*
     Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
     a mensagem de erro será mostrada no console.
