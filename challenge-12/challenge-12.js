@@ -11,7 +11,7 @@
     Preencha cada propriedade com os seus dados pessoais, respeitando o tipo
     de valor para cada propriedade.
     */
-    // ?
+
     console.log( 'Propriedades de "person":' );
     var person = {
         name: 'Nicolas',
@@ -91,8 +91,13 @@
     no formato abaixo:
         "[PROPRIEDADE]: [VALOR]"
     */
-    console.log(Object.keys(books[0])[0] + ': ' + book1.name, Object.keys(books[0])[1] + ': ' + book1.pages);
-    console.log(Object.keys(books[1])[0] + ': ' + book2.name, Object.keys(books[1])[1] + ': ' + book2.pages);
+    //console.log(Object.keys(books[0])[0] + ': ' + book1.name, Object.keys(books[0])[1] + ': ' + book1.pages);
+    //console.log(Object.keys(books[1])[0] + ': ' + book2.name, Object.keys(books[1])[1] + ': ' + book2.pages);
+    for(var i = 0 ; i < books.length ; i++){
+        for(var prop in books[i]){
+            console.log(prop + ': ' + books[i][prop])
+        };
+    };
 
     /*
     Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
