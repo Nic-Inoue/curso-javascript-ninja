@@ -1,6 +1,8 @@
 (function(){
-    function myFunction(){
-        return arguments;
-    };
-    console.log(myFunction(1, 2, 2, 3 ,5 ,3 ,7));
-})();
+    'use strict';
+    var nic = new String('Nicolas');
+    var nic2 = new String('NICOLAS');
+    var newNic = nic.charAt(0).toLowerCase() + nic.slice(1);
+
+    console.log(newNic);
+})(); 
