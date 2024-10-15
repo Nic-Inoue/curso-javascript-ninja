@@ -1,8 +1,9 @@
 (function(){
     'use strict';
-    var nic = new String('Nicolas');
-    var nic2 = new String('NICOLAS');
-    var newNic = nic.charAt(0).toLowerCase() + nic.slice(1);
-
-    console.log(newNic);
+    var regex = /\d/g;
+    var name = 'fer123nando';
+    var result;
+    while( result = regex.exec(name) !== null){
+        console.log('Ain\'t i doing shit?', result);
+    };
 })(); 
