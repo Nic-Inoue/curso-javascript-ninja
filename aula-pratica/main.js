@@ -1,16 +1,15 @@
 (function(win, doc){
     'use strict';
 
-    var button = doc.querySelector('#button');
-    var inputUsername = doc.querySelector('#username');
-    var inputPassword = doc.querySelector('#password');
+    var counter = 0;
+    var $button = doc.querySelector('[data-js="button"]');
+    var temporazidor;
+    function timer(){
+        console.log('timer', counter++);
+    };
+    temporazidor = setInterval(timer, 1000);
 
-    button.addEventListener('click', function(event) {
-        event.preventDefault();
-        console.log('Click no botão!');
-    }, false);
-
-    doc.addEventListener('click', function(){
-        alert('MEU DEUS VOCÊ CLICOU NO SITE!');
+    $button.addEventListener('click', function(){
+        clearInterval(temporazidor);
     }, false)
 })(window, document);
