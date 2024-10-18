@@ -1,15 +1,11 @@
 (function(win, doc){
     'use strict';
-
-    var counter = 0;
-    var $button = doc.querySelector('[data-js="button"]');
-    var temporazidor;
-    function timer(){
-        console.log('timer', counter++);
+    
+    function myFunction(){
+        var result = Array.prototype.reduce.call(arguments, function (previous, current, index){
+            return previous + current;
+        })
+        return result;
     };
-    temporazidor = setInterval(timer, 1000);
-
-    $button.addEventListener('click', function(){
-        clearInterval(temporazidor);
-    }, false)
+    console.log(myFunction(1, 2, 3, 4, 5, 6, 7));
 })(window, document);
