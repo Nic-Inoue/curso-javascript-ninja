@@ -32,7 +32,6 @@
     const buttonClear = doc.querySelector('[data-js="buttonClear"]');
     const buttonEqual = doc.querySelector('[data-js="buttonEqual"]');
     const arrOps = ['+', 'x', '-', '÷'];
-    display.value = '250-140x22÷22-79+81/3'
 
     for(let i = 0 ; i < buttonsNum.length ; i++){
         buttonsNum[i].addEventListener('click', function(){
@@ -96,6 +95,5 @@
             };
         };
         display.value = result;
-    }, false)
-
+    }, false);
 })(window, document);
