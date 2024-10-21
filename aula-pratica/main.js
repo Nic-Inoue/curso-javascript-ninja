@@ -1,11 +1,13 @@
 (function(win, doc){
     'use strict';
     
-    function myFunction(){
-        var result = Array.prototype.reduce.call(arguments, function (previous, current, index){
-            return previous + current;
-        })
-        return result;
+    function sum() {
+        debugger;
+        return Array.prototype.reduce.call(arguments, function (previous, current){
+           return previous + current; 
+        });
     };
-    console.log(myFunction(1, 2, 3, 4, 5, 6, 7));
+    console.log(sum(1, 21, 338, 4));
+    console.log(console);
 })(window, document);
+ 
