@@ -1,4 +1,4 @@
-(function(win, doc){
+(function(doc){
     'use strict';
 
     /*
@@ -31,69 +31,88 @@
     const buttonsOps = doc.querySelectorAll('[data-js="buttonOp"]');
     const buttonClear = doc.querySelector('[data-js="buttonClear"]');
     const buttonEqual = doc.querySelector('[data-js="buttonEqual"]');
-    const arrOps = ['+', 'x', '-', '÷'];
 
-    for(let i = 0 ; i < buttonsNum.length ; i++){
-        buttonsNum[i].addEventListener('click', function(){
-            display.value += buttonsNum[i].innerHTML;
-    }, false);
+    // function isCharZero(char){
+    //     return char === '0';
+    // };
+    // function removeZero(){
+    //     if(isCharZero(display.value[0])){
+    //         display.value = '';
+    //     };
+    // };
+    
+    function isLastCharOp(){
+        const arrOps = ['+', 'x', '-', '÷'];
+        return arrOps.includes(display.value.match(/.$/)[0])
     };
-    for(let i = 0 ; i < buttonsOps.length ; i++){
-        buttonsOps[i].addEventListener('click', function(){
-            if(arrOps.includes(display.value.match(/.$/)[0])){
-                display.value = display.value.slice(0, (display.value.length - 1));
-            };
-            display.value += buttonsOps[i].innerHTML;
-    }, false)
-    };
-
-    buttonClear.addEventListener('click', function(){
-        display.value = 0
-    }, false);
-
-    buttonEqual.addEventListener('click', function(){
-        if(arrOps.includes(display.value.match(/.$/)[0])){
-            display.value = display.value.slice(0, (display.value.length - 1));
+    function removeLastCharIfOp(){
+        if(isLastCharOp){
+            display.value = display.value.slice(0, -1);
         };
-        let numsDisplay = display.value.match(/\d+/g).map(function(item){
-            return item = Number(item);
-        });
-        let opStrings = display.value.match(/\D+/g).map(function(item){
-            if(item === '÷'){
-                return '/';
-            } else if(item === 'x'){
-                return '*'; 
-            };
-            return item
-        });
+    };
 
-        let newNums = [numsDisplay[0]];
-        let newOps = [];
+    function clickButtonDisplay(buttonsType){
+        for(let i = 0 ; i < buttonsType.length ; i++){
+            buttonsType[i].addEventListener('click', function(){
+                if(buttonsType === buttonsOps)
+                    removeLastCharIfOp();
+                display.value += buttonsType[i].innerHTML;
+            }, false)
+        };
+    };
 
-        for(let i = 0 ; i < opStrings.length ; i++){
-            let currentOp = opStrings[i];
-            let currentNum = numsDisplay[i + 1];
+    function clearDisplay(){
+        display.value = 0;
+    };
 
-            if(currentOp === '*'){
-                newNums[newNums.length - 1] *= currentNum;
-            } else if (currentOp === '/'){
-                newNums[newNums.length - 1] /= currentNum;
+    function multiplyDivideArrays(arrayNumbers, arrayOperators, resultArrayNumbers, resultArrayOperators){
+        for(let i = 0 ; i < arrayOperators.length ; i++){
+            let currentOp = arrayOperators[i];
+            let currentNum = arrayNumbers[i + 1];
+
+            if(currentOp === 'x'){
+                resultArrayNumbers[resultArrayNumbers.length - 1] *= currentNum;
+            } else if (currentOp === '÷'){
+                resultArrayNumbers[resultArrayNumbers.length - 1] /= currentNum;
             } else {
-                newOps.push(currentOp);
-                newNums.push(currentNum);
+                resultArrayOperators.push(currentOp);
+                resultArrayNumbers.push(currentNum);
             };
         };
-        let result = newNums[0];
-        for(let i = 0 ; i < newOps.length ; i++){
-            let currentOp = newOps[i];
-            let currentNum = newNums[i + 1];
+    };
+
+    function sumSubtractArrays(numberItem, resultArrayNumbers, resultArrayOperators){
+        for(let i = 0 ; i < resultArrayOperators.length ; i++){
+            let currentOp = resultArrayOperators[i];
+            let currentNum = resultArrayNumbers[i + 1];
 
             if(currentOp === '+'){
-                result += currentNum;
+                numberItem += currentNum;
             } else if (currentOp === '-'){
-                result -= currentNum;
+                numberItem -= currentNum;
             };
         };
+        return numberItem;
+    };
+
+    function calculate(){
+        removeLastCharIfOp();
+        let arrNumsDisplay = display.value.match(/\d+/g).map(function(item){
+            return item = Number(item);
+        });
+        let arrOpsDisplay = display.value.match(/\D+/g);
+        let newNums = [arrNumsDisplay[0]];
+        let newOps = [];
+
+        multiplyDivideArrays(arrNumsDisplay, arrOpsDisplay, newNums, newOps);
+        let result = newNums[0];
+        result = sumSubtractArrays(result, newNums, newOps);
         display.value = result;
-    }, false);
-})(window, document);
+    };
+
+    clickButtonDisplay(buttonsNum);
+    clickButtonDisplay(buttonsOps);
+    buttonClear.addEventListener('click', clearDisplay, false);
+    buttonEqual.addEventListener('click', calculate, false);
+
+})(document);
