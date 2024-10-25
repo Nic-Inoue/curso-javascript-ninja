@@ -34,18 +34,18 @@
 
   function addEvents(event, callback){
     this.element.forEach(function(item){
-      item.addEventListener(event, callback, false)}
-    );
+      item.addEventListener(event, callback, false);
+    });
   };
 
   function removeEvents(event, callback){
     this.element.forEach(function(item){
-      item.removeEventListener(event, callback, false)
+      item.removeEventListener(event, callback, false);
     });
   };
-  
+
   function getDomElements(){
-    return this.element
+    return this.element;
   };
 
   function clickNotification(event){
