@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de carros</title>
+    <script src="dom.js" defer></script>
+    <script src="challenge-31.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>
+            <span data-js="company-name">Nome da empresa</span>
+            <span> - </span>
+            <span data-js="company-phone">Número da empresa</span>
+        </h1>
+    </header>
+    <main>
+        <form data-js="form">
+                <h2>Imagem do carro (URL):</h2>
+                <input type="url" data-js="inputImage" placeholder="image.com/imagelink.jpg" value="https://dicas.olx.com.br/wp-content/uploads/2024/06/byd-seal-preco-1.jpg">
+                <h2>Marca-Modelo:</h2>
+                <input type="text" data-js="inputModel" placeholder="Chevrolet-Cruze" value="BYD-SEAL">
+                <h2>Placa:</h2>
+                <input type="text" data-js="inputPlate" placeholder="ABC-1D23" value="BYD-1234">
+                <h2>Ano:</h2>
+                <input type="text" data-js="inputYear" placeholder="2012" value="2024">
+                <h2>Cor:</h2>
+                <input type="text" data-js="inputColor" placeholder="Prata" value="Ciano">
+                <button type="submit"><span>Cadastrar</span></button>
+        </form>
+        <div>
+            <h2>Carros cadastrados:</h2>
+            <ul data-js="carsList"></ul>
+        </div>
+    </main>
+</body>
+</html>
